@@ -31,7 +31,7 @@ Este script lê uma lista de aplicativos de um arquivo de texto e os instala usa
 Antes de poder executar o script, você precisa dar a ele permissão de execução. Abra um terminal no diretório do script e execute:
 
 ```shell
-chmod \+x bundle-manager.sh
+chmod +x bundle-manager.sh
 ```
 
 ### 2. Crie seu arquivo de pacote
