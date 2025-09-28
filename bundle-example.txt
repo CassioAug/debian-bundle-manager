@@ -1,0 +1,8 @@
+# APT Applications:
+neovim
+ripgrep
+fzf
+
+# Flatpak Applications:
+flatpak:com.borgbase.Vorta
+flatpak:io.github.peazip.PeaZip
