@@ -1,4 +1,10 @@
 #!/bin/bash
+#
+# bundle-manager.sh
+# Copyright (C) 2025 Cássio Augusto Couto Soares
+#
+# This program is licensed under the MIT License.
+# You can find a copy of the license in the LICENSE file.
 
 [ -z "$1" ] && echo "Usage: $0 <bundle-file.txt>" && exit 1
 [ ! -f "$1" ] && echo "File $1 not found!" && exit 1
