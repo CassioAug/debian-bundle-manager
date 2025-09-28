@@ -6,21 +6,23 @@ This script reads a list of applications from a text file and installs them usin
 
 ## ✨ Features
 
-- Dual Package Manager Support: Installs software from both standard APT repositories and Flatpak.
+- **Dual Package Manager Support:** Installs software from both standard APT repositories and Flatpak.
 
-- Smart Installation: Checks if a package is already installed before attempting to install it, saving time and preventing errors.
+- **Smart Installation:** Checks if a package is already installed before attempting to install it, saving time and preventing errors.
 
-- Simple Bundle Format: Uses a plain text file to list the software you want, which is easy to create and edit.
+- **Simple Bundle Format:** Uses a plain text file to list the software you want, which is easy to create and edit.
 
-- Comments Support: You can add comments (lines starting with #) in your bundle file to keep it organized.
+- **Comments Support:** You can add comments (lines starting with #) in your bundle file to keep it organized.
+
+- **Multi-language Support:** Automatically displays messages in English or Brazilian Portuguese based on your system's language.
 
 ## ⚙️ Requirements
 
 - A Debian-based Linux distribution (e.g., Ubuntu, Debian, Linux Mint).
 
-- bash (which is standard on almost all Linux systems).
+- Bash (which is standard on almost all Linux systems).
 
-- flatpak must be installed if you intend to install Flatpak applications.
+- Flatpak must be installed if you intend to install Flatpak applications.
 
 ## 🚀 How to Use
 

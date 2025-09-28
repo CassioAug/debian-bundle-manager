@@ -6,10 +6,18 @@
 # This program is licensed under the MIT License.
 # You can find a copy of the license in the LICENSE file.
 
-[ -z "$1" ] && echo "Usage: $0 <bundle-file.txt>" && exit 1
-[ ! -f "$1" ] && echo "File $1 not found!" && exit 1
+LANGUAGE=${LANG%%.*}
+if [ -f "locales/$LANGUAGE.sh" ]; then
+    source "locales/$LANGUAGE.sh"
+else
+    source "locales/en.sh"
+fi
+# ---
 
-echo "Installing from: $1"
+[ -z "$1" ] && printf "$MSG_USAGE" "$0" && exit 1
+[ ! -f "$1" ] && printf "$MSG_FILE_NOT_FOUND" "$1" && exit 1
+
+printf "$MSG_INSTALLING_FROM" "$1"
 
 # Function: checking APT package installation
 is_apt_installed() {
@@ -39,26 +47,26 @@ for pkg in "${packages[@]}"; do
     if [[ "$pkg" =~ ^flatpak: ]]; then
         app_id="${pkg#flatpak:}"
         if is_flatpak_installed "$app_id"; then
-            echo "✅ $app_id (already installed)"
+            printf "$MSG_ALREADY_INSTALLED" "$app_id"
         else
-            echo "📥 Installing: $app_id"
+            printf "$MSG_INSTALLING" "$app_id"
 
             if flatpak install -y flathub "$app_id"; then
                 clean_terminal
-                echo "✅ Successfully installed: $app_id"
+                printf "$MSG_SUCCESS" "$app_id"
             else
                 clean_terminal
-                echo "❌ Failed to install: $app_id"
+                printf "$MSG_FAIL" "$app_id"
             fi
         fi
     else
         if is_apt_installed "$pkg"; then
-            echo "✅ $pkg (already installed)"
+            printf "$MSG_ALREADY_INSTALLED" "$pkg"
         else
-            echo "📥 Installing: $pkg"
-            sudo apt install -y "$pkg" || echo "❌ Failed to install: $pkg"
+            printf "$MSG_INSTALLING" "$pkg"
+            sudo apt install -y "$pkg" || printf "$MSG_FAIL" "$pkg"
         fi
     fi
 done
 
-echo "Installation process completed!"
+printf "$MSG_COMPLETE"
